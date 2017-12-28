@@ -26,16 +26,6 @@ def load_data_hdf5(filename):
         label = np.reshape(label,(-1,20,20,1))
         return data, label
 
-""" PSNR metric for images """
-def psnr_measure(target, ref):
-    # assume RGB image
-    diff = np.array(ref, dtype=float) - np.array(target, dtype=float)
-    diff = diff.flatten('C')
-
-    rmse = math.sqrt(np.mean(diff ** 2))
-
-    return 20 * math.log10(255. / rmse)
-
 """ combined batch norm and activation ='relu' """
 def bn_activation(layer):
     y = BatchNormalization()(layer)
@@ -139,7 +129,7 @@ def train():
 
     # Callbacks: (1) Checkpoint
     checkpoint = ModelCheckpoint('check_point.h5', monitor='val_loss',save_best_only=True,
-                                save_weights_only=False, mode='min')
+                                save_weights_only=False, mode='auto')
     callbacks = [checkpoint]
 
     # ------TRAINING----------
