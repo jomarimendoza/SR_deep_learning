@@ -29,7 +29,6 @@ python eed_train.py
 ```python
 python eed_test.py # tested on Set14 images
 ```
-The training converged at ###
 
 ## Shallow Network
 The shallow network is improved by inserting a last convolution layer with a linear activation.
@@ -42,7 +41,6 @@ python ees_train.py
 ```python
 python ees_test.py # tested on Set14 images
 ```
-The training converged at epoch20, showing fast training of the shallow network.
 
 ## Deep and Shallow Network
 Before combining both networks, the last linear activation layer is removed. The network is then followed by three residual block with an architecture as [2].
@@ -55,20 +53,17 @@ python eeds_train.py
 ```python
 python eeds_test.py # tested on Set14 images
 ```
-The training converged at ###
-
-
 
 ## Results
-Analysis is measured using PSNR (peak signal-to-noise ratio) and SSIM (structural similarity index) (notation: PSNR/SSIM). The **average** of all the images is computed. Comparison to other methods are done by evaluating the images previously reconstructed in https://github.com/jbhuang0604/SelfExSR.
+Analysis is measured using PSNR (peak signal-to-noise ratio dB) and SSIM (structural similarity index) (notation: PSNR/SSIM). The **average** of all the images is computed. Comparison to other methods are done by evaluating the images previously reconstructed in https://github.com/jbhuang0604/SelfExSR.
 
-|  Dataset | Bicubic  |   NN   | ScSR     | SelfExSR | SRCNN  | A+ | EED | EES |
-|:----------:|:--------:|:--------:|:------:|:------------:|:---------:|:--------:|:------:|:----:|
-| **Set5**   |   33.64	|   35.78	|   36.24	| Sub-band	|   35.43	|   36.28	|    A+	|   36.50	| 
+|  Dataset   | Bicubic  | Nearest  |  ScSR    | SelfExSR | SRCNN  | A+ | EED | EES | EEDS |
+|:----------:|:----------:|:------------------:|:--------------:|:------------:|:---------:|:----------:|:-------:|:----------:|:----------:|
+| **Set5**   | 27.106/0.79	|   24.988/0.715	 |   27.738/0.808	| 28.93/0.847	|   28.69/0.835	|       --	      |    A+	|   36.50	| asdfsfa | 
 ||
-| **Set14**  |   30.39	|   31.34	|   32.30	| Sub-band	|   31.10	|   32.37	|    A+	|   32.62	|
+| **Set14**  |   24.54/0.68	|   23.24/0.63	 |   24.98/0.702	| 26.014/0.735	|   25.596/0.72	|       --        	|  sdfsad	|   32.62	| asdfa |
 ||
-| **BSD100** |   28.42	|   29.07	|   30.07	| Sub-band	|   28.84	|   30.08	|    A+	|   30.33	|
+| **BSD100** |   24.658/0.645	|  23.74/0.606	 |   25.295/0.677	| 25.547/0.692	|   25.382/0.68	|   19.732/0.676	|    A+	|   30.33	| as df | 
 
 
 # References
