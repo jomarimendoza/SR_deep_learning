@@ -57,13 +57,13 @@ python eeds_test.py # tested on Set14 images
 ## Results
 Analysis is measured using PSNR (peak signal-to-noise ratio dB) and SSIM (structural similarity index) (notation: PSNR/SSIM). The **average** of all the images is computed. Comparison to other methods are done by evaluating the images previously reconstructed in https://github.com/jbhuang0604/SelfExSR.
 
-|  Dataset   | Bicubic  | Nearest  |  ScSR    | SelfExSR | SRCNN  | A+ | EED | EES | EEDS |
+|  Dataset   | EED | EES | EEDS |Bicubic  | Nearest  |  ScSR    | SelfExSR | SRCNN  | A+ | 
 |:----------:|:----------:|:------------------:|:--------------:|:------------:|:---------:|:----------:|:-------:|:----------:|:----------:|
-| **Set5**   | 27.106/0.79	|   24.988/0.715	 |   27.738/0.808	| 28.93/0.847	|   28.69/0.835	|       --	      |    A+	|   36.50	| asdfsfa | 
+| **Set5**   | A+	 |   26.147/0.778	| asdfsfa | 27.106/0.79	|   24.988/0.715	 |   27.738/0.808	| 28.93/0.847	|   28.69/0.835	|       --	      |    
 ||
-| **Set14**  |   24.54/0.68	|   23.24/0.63	 |   24.98/0.702	| 26.014/0.735	|   25.596/0.72	|       --        	|  sdfsad	|   32.62	| asdfa |
+| **Set14**  |   sdfsad	|   23.476/0.674	| asdfa |24.54/0.68	|   23.24/0.63	 |   24.98/0.702	| 26.014/0.735	|   25.596/0.72	|       --        	|  
 ||
-| **BSD100** |   24.658/0.645	|  23.74/0.606	 |   25.295/0.677	| 25.547/0.692	|   25.382/0.68	|   19.732/0.676	|    A+	|   30.33	| as df | 
+| **BSD100** |  A+	|   23.687/0.645	| as df |  24.658/0.645	|  23.74/0.606	 |   25.295/0.677	| 25.547/0.692	|   25.382/0.68	|   19.732/0.676	|    
 
 
 # References
