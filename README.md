@@ -7,6 +7,12 @@ The concept of using deep and shallow networks is extracting high-frequency feat
 - python 3.6
 - keras 2 with tensorflow
 
+## Quick Sample
+Produce images from the three networks from the Set14 folder
+```python
+python predict.py
+```
+
 ### Data 
 #### Training
 [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) dataset from [3] should be downloaded
@@ -18,7 +24,7 @@ python create_data.py
 #### Test
 Common datasets used for benchmarking are [**Set5**](https://uofi.box.com/shared/static/kfahv87nfe8ax910l85dksyl2q212voc.zip), [**Set14**](https://uofi.box.com/shared/static/igsnfieh4lz68l926l8xbklwsnnk8we9.zip) and [**BSD100**](https://uofi.box.com/shared/static/qgctsplb8txrksm9to9x01zfa4m61ngq.zip). The following datasets are obtained in https://github.com/jbhuang0604/SelfExSR. 
 
-## Deep Network
+## Deep Network (EED)
 For the deep network, similar network architecture is implemented with modifications on feature extraction and reconstruction. A linear activation layer is inserted to map the reconstruction to the HR image. 
 ![](images/deep_network.jpg)
 
@@ -30,7 +36,7 @@ python eed_train.py
 python eed_test.py # tested on Set14 images
 ```
 
-## Shallow Network
+## Shallow Network (EES)
 The shallow network is improved by inserting a last convolution layer with a linear activation.
 ![](images/shallow_network.jpg)
 
@@ -42,7 +48,7 @@ python ees_train.py
 python ees_test.py # tested on Set14 images
 ```
 
-## Deep and Shallow Network
+## Deep and Shallow Network (EEDS)
 Before combining both networks, the last linear activation layer is removed. The network is then followed by three residual block with an architecture as [2].
 ![](images/ds_network.jpg)
 
