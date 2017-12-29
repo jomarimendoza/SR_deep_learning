@@ -42,7 +42,7 @@ def train():
     print('testing shape: ',x_valid.shape, y_valid.shape)
 
     # Load the model
-    inputs = Input(shape=(24,24,1))
+    inputs = Input(shape=(None,None,1))
 
     # create proposed model, with ResNet weights frozen
     model = EEDS_model(inputs=inputs)
