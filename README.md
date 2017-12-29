@@ -1,5 +1,5 @@
 # Super Resolution using Deep and Shallow Networks
-Based on End-to-End Image Super-Resolution via Deep and Shallow Convolutional Networks
+Based on End-to-End Image Super-Resolution via Deep and Shallow Convolutional Networks [1]
 
 The concept of using deep and shallow networks is extracting high-frequency features and low-frequency features which are useful for reconstruction. This project improved the previously implemented network with modifications on feature extraction and reconstruction layers. The network is only trained and tested on 4x scaling
 
@@ -13,7 +13,7 @@ The concept of using deep and shallow networks is extracting high-frequency feat
 ```python
 python create_data.py
 ```
-24000 train data and 3000 validation data for DIV2K is created
+**24000** train data and **3000** validation data for DIV2K is created
 
 #### Test
 Common datasets used for benchmarking are [**Set5**](https://uofi.box.com/shared/static/kfahv87nfe8ax910l85dksyl2q212voc.zip), [**Set14**](https://uofi.box.com/shared/static/igsnfieh4lz68l926l8xbklwsnnk8we9.zip) and [**BSD100**](https://uofi.box.com/shared/static/qgctsplb8txrksm9to9x01zfa4m61ngq.zip). The following datasets are obtained in https://github.com/jbhuang0604/SelfExSR. 
@@ -60,7 +60,7 @@ The training converged at ###
 
 
 ## Results
-Analysis is measured using PSNR (peak signal-to-noise ratio) and SSIM (structural similarity index) (notation: PSNR/SSIM). A list of images produced by other super resolution is also reported together with the 3/4 networks implemented. 
+Analysis is measured using PSNR (peak signal-to-noise ratio) and SSIM (structural similarity index) (notation: PSNR/SSIM). The **average** of all the images is computed. Comparison to other methods are done by evaluating the images previously reconstructed in https://github.com/jbhuang0604/SelfExSR.
 
 |  Dataset | Bicubic  |   NN   | ScSR     | SelfExSR | SRCNN  | A+ | EED | EES |
 |:----------:|:--------:|:--------:|:------:|:------------:|:---------:|:--------:|:------:|:----:|
