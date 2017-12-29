@@ -14,7 +14,7 @@ import numpy as np
 import math
 
 # Import Deep model
-from eeds_model import EED_model, load_data_hdf5
+from models import EED_model, load_data_hdf5
 
 def lr_schedule(epoch):
     if(epoch < 30):
