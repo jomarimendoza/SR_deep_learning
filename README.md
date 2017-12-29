@@ -1,7 +1,7 @@
 # Super Resolution using Deep and Shallow Networks
 Based on End-to-End Image Super-Resolution via Deep and Shallow Convolutional Networks [1]
 
-The concept of using deep and shallow networks is extracting high-frequency features and low-frequency features which are useful for reconstruction. This project improved the previously implemented network with modifications on feature extraction and reconstruction layers. The network is only trained and tested on 4x scaling
+The concept of using deep and shallow networks is extracting high-frequency features and low-frequency features which are useful for reconstruction. This project revised the previously implemented network with modifications on feature extraction and reconstruction layers. The network is only trained and tested on 4x scaling scenarios
 
 ## Requirements
 - python 3.6
@@ -53,6 +53,8 @@ python eeds_train.py
 ```python
 python eeds_test.py # tested on Set14 images
 ```
+
+***NOTE:*** Testing is done per image where the network upscales (x4) the input low resolution image
 
 ## Results
 Analysis is measured using PSNR (peak signal-to-noise ratio dB) and SSIM (structural similarity index) (notation: PSNR **/** SSIM). The **average** of all the images is computed. Comparison to other methods are done by evaluating the images previously reconstructed in https://github.com/jbhuang0604/SelfExSR.
