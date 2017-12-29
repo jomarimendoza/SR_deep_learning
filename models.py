@@ -63,7 +63,7 @@ def EED_model(inputs):
     scale_layer = keras.layers.concatenate([scale_1, scale_3, scale_5, scale_7])
 
     output = Conv2D(1, (1,1), kernel_initializer='glorot_uniform', padding='same', use_bias=True)(scale_layer)
-    output = Activation('linear')(output)   # regression
+    output = Activation('relu')(output)  
 
     model = Model(inputs=inputs,outputs=output)
 
@@ -80,7 +80,7 @@ def EES_model(inputs):
     y = conv_bn_relu(y, 5, (1,1))
 
     output = Conv2D(1, (1,1), kernel_initializer='glorot_uniform', padding='same', use_bias=True)(y)
-    output = Activation('linear')(output)   # regression
+    output = Activation('relu')(output)  
 
     model = Model(inputs=inputs,outputs=output)
 
@@ -111,7 +111,7 @@ def EEDS_model(inputs, freeze_weights=False):
     y = res_block(add_layer, 16,depth=3)
 
     output = Conv2D(1, (1,1), kernel_initializer='glorot_uniform', padding='same', use_bias=True)(y)
-    output = Activation('linear')(output)   # regression
+    output = Activation('relu')(output) 
 
     model = Model(inputs=inputs,outputs=output)
 

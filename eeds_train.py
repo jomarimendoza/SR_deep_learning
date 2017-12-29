@@ -31,7 +31,7 @@ def lr_schedule(epoch):
 """ train the model """
 def train():
     # Hyperparameters
-    batch_size = 16
+    batch_size = 128
     epochs = 150
 
     # Load data
