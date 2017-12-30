@@ -15,7 +15,8 @@ python predict.py # chooses an image from Set14 folder
 
 ### Data 
 #### Training
-[DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) dataset from [3] should be downloaded
+[DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) dataset from [3] should be downloaded.
+After downloading dataset place 'DIV2K_train_HR' and 'DIV2K_valid_HR' folders in similar folder for script to run.
 ```python
 python create_data.py
 ```
