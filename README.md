@@ -79,7 +79,7 @@ Analysis is measured using PSNR (peak signal-to-noise ratio dB) and SSIM (struct
 ||
 | **BSD100** |  23.88 **/** 0.652 |   23.687 **/** 0.645	| 23.3378 **/** 0.639 |  24.658 **/** 0.645	|  23.74 **/** 0.606	 |   25.295 **/** 0.677	| 25.547 **/** 0.692	|   25.382 **/** 0.68	|   19.732 **/** 0.676	|    
 
-The combined network results to poor results which may be caused by not fully optimizing the final layers after addition.
+The combined network showed poor results which may be caused by not fully optimizing the final layers after addition.
 
 # References
 [1] [End-to-End Image Super-Resolution via Deep and Shallow Convolutional Networks](https://arxiv.org/abs/1607.07680)
