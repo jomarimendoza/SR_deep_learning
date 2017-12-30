@@ -3,6 +3,7 @@ from glob import glob
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 from h5py import File as h5file
 
+import random
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
@@ -70,24 +71,53 @@ def recon_image(img, model_type='ees'):
 
     # Change Y channel with reconstructed
     # Preserve CrCb
-    hr_img[:,:,0] = hr_Y
+    hr_img[:,:,0] = hr_Y.astype('uint8')
 
     recon_img = cv2.cvtColor(hr_img, cv2.COLOR_YCrCb2BGR)
     return recon_img
 
 if __name__ == '__main__':
     """ CHANGE MODEL HERE """
-    img = recon_image('./Set14/img_001_SRF_4_HR.png', model_type='ees')
-    plot_img(img, title='Sample image', with_color=True)
+    #img = recon_image('./Set14/img_001_SRF_4_HR.png', model_type='ees')
+    #plot_img(img, title='Sample image', with_color=True)
 
     # Read an image
     imageSet = glob('./Set14/*')
 
     images = []
     titles = []
-    for img in imageSet:
-        images.append(recon_image(img))
-        title = 'Image ' + img.split('_')[1]
-        titles.append(title)
+    #for img in imageSet:
+    #    images.append(recon_image(img))
+    #    title = 'Image ' + img.split('_')[1]
+    #    titles.append(title)
     # 2x7 subplot
-    display_multi_images(images, 3, 5, titles, with_color=True)
+    #display_multi_images(images, 3, 5, titles, with_color=True)
+
+    hr_img_name = imageSet[random.randint(0,len(imageSet)-1)]
+
+    scale = 4
+
+    # Load image from data set
+    hr_img = cv2.imread(hr_img_name, cv2.IMREAD_COLOR)
+
+    # 4x4 divisibility dimensions
+    height = int( scale * floor( hr_img.shape[0] / scale ))
+    width = int( scale * floor( hr_img.shape[1] / scale ))
+
+    hr_img = resize_3channels(hr_img, height, width)
+    images.append(hr_img.astype('uint8'))
+    titles.append('High Resolution')
+
+    ees_img = recon_image(hr_img_name, model_type='ees')
+    images.append(ees_img)
+    titles.append('Reconstructed by EES')
+
+    eed_img = recon_image(hr_img_name, model_type='eed')
+    images.append(eed_img)
+    titles.append('Reconstructed by EED')
+
+    eeds_img = recon_image(hr_img_name, model_type='eed')
+    images.append(eeds_img)
+    titles.append('Reconstructed by EEDS')
+
+    display_multi_images(images,2,2,titles, with_color=True)

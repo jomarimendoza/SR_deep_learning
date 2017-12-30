@@ -37,9 +37,7 @@ def EED_model(inputs):
 
     """ Upsampling """
     y = conv_bn_relu(feature, 4, (1,1))
-    for _ in range(6):
-        y = Conv2DTranspose(4, (13,13), kernel_initializer='glorot_uniform', padding='valid', use_bias=True)(y)
-        y = Activation('relu')(y)
+    y = Conv2DTranspose(filters=4, kernel_size=(16, 16), strides=(4, 4), padding='same', activation='relu')(y)
     y = conv_bn_relu(y, 64,(1,1))
 
     """ Reconstruction """
@@ -63,7 +61,7 @@ def EED_model(inputs):
     scale_layer = keras.layers.concatenate([scale_1, scale_3, scale_5, scale_7])
 
     output = Conv2D(1, (1,1), kernel_initializer='glorot_uniform', padding='same', use_bias=True)(scale_layer)
-    output = Activation('relu')(output)  
+    output = Activation('linear')(output)   # regression
 
     model = Model(inputs=inputs,outputs=output)
 
@@ -74,13 +72,11 @@ def EED_model(inputs):
 """ Shallow layers [1] """
 def EES_model(inputs):
     y = conv_bn_relu(inputs, 3, (3,3))
-    for _ in range(6):
-        y = Conv2DTranspose(4, (13,13), kernel_initializer='glorot_uniform', padding='valid', use_bias=True)(y)
-        y = Activation('relu')(y)
+    y = Conv2DTranspose(filters=4, kernel_size=(16, 16), strides=(4, 4), padding='same', activation='relu')(y)
     y = conv_bn_relu(y, 5, (1,1))
 
     output = Conv2D(1, (1,1), kernel_initializer='glorot_uniform', padding='same', use_bias=True)(y)
-    output = Activation('relu')(output)  
+    output = Activation('linear')(output)   # regression
 
     model = Model(inputs=inputs,outputs=output)
 
@@ -101,7 +97,7 @@ def EEDS_model(inputs, freeze_weights=False):
         for ees_layer,eed_layer in zip(ees_model,eed_model):
             ees_layer.trainable = False
             eed_layer.trainable = False
-            
+
     # Remove the linear activation layers
     ees_model.layers.pop()
     eed_model.layers.pop()
@@ -111,7 +107,7 @@ def EEDS_model(inputs, freeze_weights=False):
     y = res_block(add_layer, 16,depth=3)
 
     output = Conv2D(1, (1,1), kernel_initializer='glorot_uniform', padding='same', use_bias=True)(y)
-    output = Activation('relu')(output) 
+    output = Activation('linear')(output)   # regression
 
     model = Model(inputs=inputs,outputs=output)
 
